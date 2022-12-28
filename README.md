@@ -1,5 +1,7 @@
 # pulsepoint
 
+[![npm version](https://img.shields.io/npm/v/pulsepoint?style=flat-square)](https://www.npmjs.com/package/pulsepoint)
+
 ## About
 
 Open-source Node.js wrapper written in TypeScript for retrieving information from the [PulsePoint](https://web.pulsepoint.org) API. Interprets the encoding used by PulsePoint, simplifies requests to useful data, and converts relevant values to human-readable responses.
