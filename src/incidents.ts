@@ -62,8 +62,7 @@ const convertIncident = (incident: APIIncident): Incident => ({
 
 /**
  * Fetches active and recent incidents for a given agency.
- *
- * @param agencyId Can be obtained from [PulsePoint Web](https://web.pulsepoint.org) using developer tools.
+ * @param agencyId String representing the agency id, can be obtained from [PulsePoint Web](https://web.pulsepoint.org) using developer tools.
  */
 export const getIncidents = async (
   agencyId: string,
@@ -75,4 +74,11 @@ export const getIncidents = async (
     active: rawIncidents.active?.map(convertIncident) ?? [],
     recent: rawIncidents.recent?.map(convertIncident) ?? [],
   }
+}
+
+/**
+ * Returns an array of all possible incident types.
+ */
+export const getIncidentTypes = () => {
+  return Array.from(callTypes.values())
 }
