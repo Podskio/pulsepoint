@@ -4,7 +4,7 @@
 
 ## About
 
-Open-source Node.js wrapper written in TypeScript for retrieving information from the [PulsePoint](https://web.pulsepoint.org) API. Interprets the encoding used by PulsePoint, simplifies requests to useful data, and converts relevant values to human-readable responses.
+Open-source Node.js wrapper written in TypeScript for retrieving information from the [PulsePoint](https://web.pulsepoint.org) API. Interprets the encoding used by PulsePoint, simplifies requests to useful data, and converts relevant values to human-readable text.
 
 This is an **unofficial** package and is not affiliated with or supported by PulsePoint in any way.
 
@@ -47,8 +47,6 @@ To obtain an agency id:
 
 <img src="assets/agency_id_ex.png" alt="agency id example" />
 
----
-
 #### Example Incident Response
 
 ```js
@@ -68,3 +66,7 @@ To obtain an agency id:
   ]
 }
 ```
+
+---
+
+`getIncidentTypes()` Returns an array of incident types used by PulsePoint.

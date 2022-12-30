@@ -70,6 +70,7 @@ export const getIncidents = async (
   const rawData = await getIncidentsEncoded(agencyId)
   const { incidents: rawIncidents } = decodeJson(rawData)
 
+  // Ensure an array is returned if the API returns null
   return {
     active: rawIncidents.active?.map(convertIncident) ?? [],
     recent: rawIncidents.recent?.map(convertIncident) ?? [],
@@ -77,7 +78,7 @@ export const getIncidents = async (
 }
 
 /**
- * Returns an array of all possible incident types.
+ * Returns an array of incident types used by PulsePoint.
  */
 export const getIncidentTypes = () => {
   return Array.from(callTypes.values())
