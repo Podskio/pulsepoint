@@ -13,8 +13,11 @@ import { decodeJson } from "./crypto"
 
 const endpoint = "https://web.pulsepoint.org/DB/giba.php?agency_id="
 
-const getIncidentsEncoded = async (agencyId: string): Promise<APIData> => {
-  const response = await fetch(endpoint + agencyId)
+const getIncidentsEncoded = async (
+  agencyIds: string | string[],
+): Promise<APIData> => {
+  const agencies = Array.isArray(agencyIds) ? agencyIds.join(",") : agencyIds
+  const response = await fetch(endpoint + agencies)
 
   if (!response.ok) throw new Error("Failed to fetch incidents")
 
@@ -62,12 +65,12 @@ const convertIncident = (incident: APIIncident): Incident => ({
 
 /**
  * Fetches active and recent incidents for a given agency.
- * @param agencyId String representing the agency id, can be obtained from [PulsePoint Web](https://web.pulsepoint.org) using developer tools.
+ * @param agencyIds String(s) representing the agency id(s), can be obtained from [PulsePoint Web](https://web.pulsepoint.org) using developer tools.
  */
 export const getIncidents = async (
-  agencyId: string,
+  agencyIds: string | string[],
 ): Promise<AgencyIncidents> => {
-  const rawData = await getIncidentsEncoded(agencyId)
+  const rawData = await getIncidentsEncoded(agencyIds)
   const { incidents: rawIncidents } = decodeJson(rawData)
 
   // Ensure an array is returned if the API returns null
