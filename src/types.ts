@@ -12,6 +12,7 @@ export interface APIUnit {
 
 export interface APIIncident {
   ID: string
+  AgencyID: string
   Latitude: string
   Longitude: string
   PulsePointIncidentCallType: string
@@ -39,6 +40,7 @@ export interface Unit {
 
 export interface Incident {
   id: string
+  agencyId: string
   type: string
   coordinates: [string, string]
   address: string

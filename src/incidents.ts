@@ -53,6 +53,7 @@ const getIncidentType = (shortType: string) => {
 
 const convertIncident = (incident: APIIncident): Incident => ({
   id: incident.ID,
+  agencyId: incident.AgencyID,
   type: getIncidentType(incident.PulsePointIncidentCallType),
   coordinates: [incident.Latitude, incident.Longitude],
   address: incident.FullDisplayAddress,
