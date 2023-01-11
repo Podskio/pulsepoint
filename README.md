@@ -38,7 +38,7 @@ getIncidents("LAFDC").then((incidents) => {
 
 ### Incidents
 
-`getIncidents(agencyId)` Fetches active and recent incidents for a given agency.
+`getIncidents(agencyIds)` Fetches active and recent incidents for a given agency or array of agencies.
 
 To obtain an agency id:
 
@@ -54,6 +54,7 @@ To obtain an agency id:
 ```js
 {
   "id": "1",
+  "agencyId": "LAFDC",
   "type": "Medical Emergency",
   "coordinates": ["0.000", "0.000"],
   "address": "EXAMPLE LN, CITY, STATE",
