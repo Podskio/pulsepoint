@@ -55,7 +55,7 @@ const convertIncident = (incident: APIIncident): Incident => ({
   id: incident.ID,
   agencyId: incident.AgencyID,
   type: getIncidentType(incident.PulsePointIncidentCallType),
-  coordinates: [incident.Latitude, incident.Longitude],
+  coordinates: [Number(incident.Latitude), Number(incident.Longitude)],
   address: incident.FullDisplayAddress,
   receivedTime: new Date(incident.CallReceivedDateTime),
   clearedTime: incident.ClosedDateTime
