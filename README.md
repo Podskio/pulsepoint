@@ -56,7 +56,7 @@ To obtain an agency id:
   "id": "1",
   "agencyId": "LAFDC",
   "type": "Medical Emergency",
-  "coordinates": ["0.000", "0.000"],
+  "coordinates": [0.000, 0.000],
   "address": "EXAMPLE LN, CITY, STATE",
   "receivedTime": "2022-01-01T00:00:00Z",
   "clearedTime": "2022-01-01T00:00:00Z",

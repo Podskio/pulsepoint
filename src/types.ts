@@ -42,7 +42,7 @@ export interface Incident {
   id: string
   agencyId: string
   type: string
-  coordinates: [string, string]
+  coordinates: [number, number]
   address: string
   receivedTime: Date
   clearedTime?: Date
