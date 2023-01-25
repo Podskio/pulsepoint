@@ -8,8 +8,6 @@ Open-source Node.js wrapper written in TypeScript for retrieving information fro
 
 This is an **unofficial** package and is not affiliated with or supported by PulsePoint in any way.
 
-Requires Node.js 17.5.0 or newer.
-
 ## Install
 
 Install the module with your package manager of choice:
@@ -66,7 +64,11 @@ To obtain an agency id:
       "status": "Cleared",
       "clearedTime": "2022-01-01T00:00:00Z",
     }
-  ]
+  ],
+  "images": {
+    "active": "https://web.pulsepoint.org/assets/images/...",
+    "recent": "https://web.pulsepoint.org/assets/images/..."
+  }
 }
 ```
 
