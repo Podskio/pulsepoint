@@ -38,6 +38,11 @@ export interface Unit {
   clearedTime?: Date
 }
 
+export interface IncidentImages {
+  active: string
+  recent: string
+}
+
 export interface Incident {
   id: string
   agencyId: string
@@ -47,6 +52,7 @@ export interface Incident {
   receivedTime: Date
   clearedTime?: Date
   units: Unit[]
+  images: IncidentImages
 }
 
 export interface AgencyIncidents {

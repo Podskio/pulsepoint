@@ -4,6 +4,7 @@ import type {
   APIUnit,
   AgencyIncidents,
   Incident,
+  IncidentImages,
   Unit,
   UnitStatus,
 } from "./types"
@@ -51,6 +52,11 @@ const getIncidentType = (shortType: string) => {
   return callTypes.get(shortType) || "Unknown"
 }
 
+const getIncidentImages = (type: string): IncidentImages => ({
+  active: `https://web.pulsepoint.org/assets/images/msa/${type.toLowerCase()}_map_active.png`,
+  recent: `https://web.pulsepoint.org/assets/images/msr/${type.toLowerCase()}_map_recent.png`,
+})
+
 const convertIncident = (incident: APIIncident): Incident => ({
   id: incident.ID,
   agencyId: incident.AgencyID,
@@ -62,6 +68,7 @@ const convertIncident = (incident: APIIncident): Incident => ({
     ? new Date(incident.ClosedDateTime)
     : undefined,
   units: convertUnits(incident.Unit || []),
+  images: getIncidentImages(incident.PulsePointIncidentCallType),
 })
 
 /**
