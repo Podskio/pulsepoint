@@ -9,6 +9,7 @@ import type {
   UnitStatus,
 } from "./types"
 
+import axios from "axios"
 import callTypes from "./callTypes"
 import { decodeJson } from "./crypto"
 
@@ -18,11 +19,11 @@ const getIncidentsEncoded = async (
   agencyIds: string | string[],
 ): Promise<APIData> => {
   const agencies = Array.isArray(agencyIds) ? agencyIds.join(",") : agencyIds
-  const response = await fetch(endpoint + agencies)
+  const response = await axios.get(endpoint + agencies)
 
-  if (!response.ok) throw new Error("Failed to fetch incidents")
+  if (response.status !== 200) throw new Error("Failed to fetch incidents")
 
-  return await response.json()
+  return response.data
 }
 
 const unitStatuses = new Map<string, UnitStatus>([

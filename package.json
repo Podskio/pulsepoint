@@ -8,8 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "pnpm build"
   },
   "files": [
     "dist"
@@ -22,6 +21,9 @@
     "url": "https://github.com/jpod32/pulsepoint/issues"
   },
   "homepage": "https://github.com/jpod32/pulsepoint#readme",
+  "dependencies": {
+    "axios": "^1.2.3"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
@@ -37,8 +39,5 @@
     "fire",
     "ems",
     "911"
-  ],
-  "engines": {
-    "node": ">=17.5.0"
-  }
+  ]
 }
