@@ -1,2 +1,2 @@
 export * from "./incidents"
-export type { UnitStatus } from "./types"
+export type { UnitStatus } from "./typings"
