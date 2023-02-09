@@ -1,6 +1,6 @@
 import { createDecipheriv, createHash } from "crypto"
 
-import type { APIData } from "./types"
+import type { APIData } from "./typings"
 
 const hashPassword = "tombrady5rings" // Someone likes football...
 

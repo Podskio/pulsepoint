@@ -1,17 +1,16 @@
+import axios from "axios"
+import callTypes from "./callTypes"
+import { decodeJson } from "./crypto"
 import type {
+  AgencyIncidents,
   APIData,
   APIIncident,
   APIUnit,
-  AgencyIncidents,
   Incident,
   IncidentImages,
   Unit,
   UnitStatus,
-} from "./types"
-
-import axios from "axios"
-import callTypes from "./callTypes"
-import { decodeJson } from "./crypto"
+} from "./typings"
 
 const endpoint = "https://web.pulsepoint.org/DB/giba.php?agency_id="
 

@@ -1,9 +1,3 @@
-export interface APIData {
-  ct: string
-  iv: string
-  s: string
-}
-
 export interface APIUnit {
   UnitID: string
   PulsePointDispatchStatus: string
