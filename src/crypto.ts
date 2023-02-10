@@ -1,5 +1,4 @@
 import { createDecipheriv, createHash } from "crypto"
-
 import type { APIData } from "./typings"
 
 const hashPassword = "tombrady5rings" // Someone likes football...
@@ -43,8 +42,8 @@ export const decodeJson = (data: APIData) => {
   // Remove leading and trailing quotes
   let result = output.toString().slice(1, -1)
 
-  // Replace escaped quotes with actual quotes
-  result = result.replaceAll(/\\"/g, '"')
+  // Replace escaped quotes with actual quotes and remove newlines
+  result = result.replaceAll(/\\"/g, '"').replaceAll(/\\n/g, "")
 
   try {
     return JSON.parse(result)
