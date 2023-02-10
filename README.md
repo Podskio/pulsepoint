@@ -23,7 +23,7 @@ $ pnpm add pulsepoint
 ## Example Usage
 
 ```js
-import { getIncidents } from "pulsepoint"
+import { getAgencyByLatLng, getAgencyData, getIncidents } from "pulsepoint"
 
 // Get incidents from the LAFD Central Bureau
 getIncidents("LAFDC").then((incidents) => {
