@@ -30,6 +30,11 @@ getIncidents("LAFDC").then((incidents) => {
   // Log the types of active calls
   console.log(incidents.active.map((incident) => incident.type))
 })
+
+// Get the agencyKey for the LAFD Central Bureau then retrieve agency data
+getAgencyByLatLng([34.075439840119685, -118.21768041631815]).then((agencies) =>
+  getAgencyData(agencies[0].agencyKey).then(console.log),
+)
 ```
 
 ## API
@@ -72,6 +77,14 @@ To obtain an agency id:
 }
 ```
 
+`getIncidentTypes()` Returns an array of incident types used by PulsePoint.
+
 ---
 
-`getIncidentTypes()` Returns an array of incident types used by PulsePoint.
+### Agencies
+
+`getAgencyByLatLng([lat, lng])` Fetches the "key" and name for all agencies covering the given coordinates. Pass an `agencyKey` to `getAgencyData` to retrieve detailed information.
+
+`getAgencyData(agencyKey)` Fetches detailed information about a given agency.
+
+> An `agencyKey` is not the same as the `agencyId` used by `getIncidents`.
