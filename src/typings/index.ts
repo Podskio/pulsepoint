@@ -4,4 +4,5 @@ export interface APIData {
   s: string
 }
 
+export * from "./agencies"
 export * from "./incidents"
