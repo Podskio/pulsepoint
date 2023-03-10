@@ -1,6 +1,6 @@
 {
   "name": "pulsepoint",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Node.js wrapper for retrieving information from the PulsePoint API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
