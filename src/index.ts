@@ -1,3 +1,3 @@
 export * from "./agencies"
 export * from "./incidents"
-export type { UnitStatus } from "./typings"
+export type { Agency, CallType, Incident, Unit, UnitStatus } from "./types"
