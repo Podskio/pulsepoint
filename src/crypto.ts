@@ -1,7 +1,6 @@
 import { createDecipheriv, createHash } from "crypto"
-import type { APIData } from "./typings"
-
-const hashPassword = "tombrady5rings" // Someone likes football...
+import { HASH_PASSWORD } from "./constants"
+import type { APIData } from "./types"
 
 const getHashComponents = (data: APIData) => {
   // Convert data to necessary formats
@@ -25,7 +24,7 @@ export const decodeJson = (data: APIData) => {
   while (key.length < 32) {
     if (intermediateHash) hash.update(intermediateHash)
 
-    hash.update(hashPassword)
+    hash.update(HASH_PASSWORD)
     hash.update(salt)
 
     intermediateHash = hash.digest()

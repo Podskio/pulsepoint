@@ -1,14 +1,7 @@
 import axios from "axios"
+import { ENDPOINTS } from "./constants"
 import { decodeJson } from "./crypto"
-import type {
-  Agency,
-  AgencySearchData,
-  APIAgency,
-  APISearchAgencies,
-} from "./typings"
-
-const coordsLookupEndpoint = "https://web.pulsepoint.org/DB/gabc.php"
-const agencyDataEndpoint = "https://web.pulsepoint.org/DB/GeolocationAgency.php?id="
+import type { Agency, AgencySearchData, APIAgency, APISearchAgencies } from "./types"
 
 /**
  * Fetches the "key" and name for all agencies covering the given coordinates. `agencyKey` can be passed to `getAgencyData` to retrieve detailed information.
@@ -17,7 +10,7 @@ const agencyDataEndpoint = "https://web.pulsepoint.org/DB/GeolocationAgency.php?
 export const getAgencyByLatLng = async (
   coordinates: [number, number],
 ): Promise<AgencySearchData[]> => {
-  const response = await axios.get(coordsLookupEndpoint, {
+  const response = await axios.get(ENDPOINTS.coordsLookup, {
     params: {
       lat: coordinates[0],
       lng: coordinates[1],
@@ -104,7 +97,7 @@ const convertAgency = (agency: APIAgency): Agency => ({
  * @param agencyKey Obtained from `getAgencyFromLatLng`.
  */
 export const getAgencyData = async (agencyKey: string): Promise<Agency> => {
-  const response = await axios.get(agencyDataEndpoint + agencyKey)
+  const response = await axios.get(ENDPOINTS.agencyData + agencyKey)
 
   if (response.status !== 200) throw new Error("Failed to fetch agency details")
 
