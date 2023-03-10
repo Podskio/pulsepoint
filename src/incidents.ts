@@ -1,5 +1,5 @@
 import axios from "axios"
-import callTypes from "./callTypes"
+import { CALL_TYPES, ENDPOINTS, UNIT_STATUS } from "./constants"
 import { decodeJson } from "./crypto"
 import type {
   AgencyIncidents,
@@ -9,35 +9,21 @@ import type {
   Incident,
   IncidentImages,
   Unit,
-  UnitStatus,
-} from "./typings"
-
-const endpoint = "https://web.pulsepoint.org/DB/giba.php?agency_id="
+} from "./types"
 
 const getIncidentsEncoded = async (
   agencyIds: string | string[],
 ): Promise<APIData> => {
   const agencies = Array.isArray(agencyIds) ? agencyIds.join(",") : agencyIds
-  const response = await axios.get(endpoint + agencies)
+  const response = await axios.get(ENDPOINTS.incidents + agencies)
 
   if (response.status !== 200) throw new Error("Failed to fetch incidents")
 
   return response.data
 }
 
-const unitStatuses = new Map<string, UnitStatus>([
-  ["DP", "Dispatched"],
-  ["AK", "Acknowledged"],
-  ["ER", "Enroute"],
-  ["OS", "On Scene"],
-  ["AE", "Available on Scene"],
-  ["TR", "Transport"],
-  ["TA", "Transport Arrived"],
-])
-
-const getUnitStatus = (shortStatus: string): UnitStatus => {
-  return unitStatuses.get(shortStatus) || "Cleared"
-}
+const getUnitStatus = (shortStatus: string) =>
+  UNIT_STATUS[shortStatus as keyof typeof UNIT_STATUS] || "Unknown"
 
 const convertUnits = (units: APIUnit[]): Unit[] =>
   units.map((unit) => ({
@@ -48,9 +34,8 @@ const convertUnits = (units: APIUnit[]): Unit[] =>
       : undefined,
   }))
 
-const getIncidentType = (shortType: string) => {
-  return callTypes.get(shortType) || "Unknown"
-}
+const getIncidentType = (shortType: string) =>
+  CALL_TYPES[shortType as keyof typeof CALL_TYPES] || "Unknown"
 
 const getIncidentImages = (type: string): IncidentImages => ({
   active: `https://web.pulsepoint.org/assets/images/msa/${type.toLowerCase()}_map_active.png`,
@@ -92,5 +77,5 @@ export const getIncidents = async (
  * Returns an array of incident types used by PulsePoint.
  */
 export const getIncidentTypes = () => {
-  return Array.from(callTypes.values())
+  return Object.values(CALL_TYPES)
 }
