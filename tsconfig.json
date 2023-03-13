@@ -1,13 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "lib": ["esnext", "dom"],
-    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "dist",
     "removeComments": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -17,6 +11,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true
-  },
-  "include": ["src/**/*.ts"]
+  }
 }
