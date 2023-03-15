@@ -2,13 +2,15 @@ import axios from "axios"
 import { CALL_TYPES, ENDPOINTS, UNIT_STATUS } from "./constants"
 import { decodeJson } from "./crypto"
 import type {
+  ActiveIncident,
+  ActiveUnit,
   AgencyIncidents,
   APIData,
   APIIncident,
   APIUnit,
-  Incident,
   IncidentImages,
-  Unit,
+  RecentIncident,
+  RecentUnit,
 } from "./types"
 
 const getIncidentsEncoded = async (
@@ -25,7 +27,7 @@ const getIncidentsEncoded = async (
 const getUnitStatus = (shortStatus: string) =>
   UNIT_STATUS[shortStatus as keyof typeof UNIT_STATUS] || "Unknown"
 
-const convertUnits = (units: APIUnit[]): Unit[] =>
+const convertUnits = (units: APIUnit[]): ActiveUnit[] | RecentUnit[] =>
   units.map((unit) => ({
     id: unit.UnitID,
     status: getUnitStatus(unit.PulsePointDispatchStatus),
@@ -42,7 +44,7 @@ const getIncidentImages = (type: string): IncidentImages => ({
   recent: `https://web.pulsepoint.org/assets/images/msr/${type.toLowerCase()}_map_recent.png`,
 })
 
-const convertIncident = (incident: APIIncident): Incident => ({
+const convertIncident = (incident: APIIncident): ActiveIncident | RecentIncident => ({
   id: incident.ID,
   agencyId: incident.AgencyID,
   type: getIncidentType(incident.PulsePointIncidentCallType),

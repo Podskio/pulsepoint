@@ -70,9 +70,12 @@ export interface APIAgency {
 
 export type UnitStatus = (typeof UNIT_STATUS)[keyof typeof UNIT_STATUS]
 
-export interface Unit {
+export interface ActiveUnit {
   id: string
   status: UnitStatus
+}
+
+export interface RecentUnit extends ActiveUnit {
   clearedTime?: Date
 }
 
@@ -83,21 +86,25 @@ export interface IncidentImages {
 
 export type CallType = (typeof CALL_TYPES)[keyof typeof CALL_TYPES]
 
-export interface Incident {
+export interface ActiveIncident {
   id: string
   agencyId: string
   type: CallType
   coordinates: [number, number]
   address: string
   receivedTime: Date
-  clearedTime?: Date
-  units: Unit[]
+  units: ActiveUnit[]
   images: IncidentImages
 }
 
+export interface RecentIncident extends ActiveIncident {
+  clearedTime: Date
+  units: RecentUnit[]
+}
+
 export interface AgencyIncidents {
-  active: Incident[]
-  recent: Incident[]
+  active: ActiveIncident[]
+  recent: RecentIncident[]
 }
 
 export interface AgencySearchData {
