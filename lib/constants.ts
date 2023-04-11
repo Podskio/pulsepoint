@@ -11,11 +11,11 @@ export const UNIT_STATUS = {
   AK: "Acknowledged",
   ER: "Enroute",
   OS: "On Scene",
-  AE: "Available on Scene",
   TR: "Transport",
   TA: "Transport Arrived",
-  AR: "Cleared",
-  AQ: "Cleared",
+  AQ: "Available in Quarters",
+  AR: "Available on Radio",
+  AE: "Available on Scene",
 } as const
 
 export const CALL_TYPES = {
