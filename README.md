@@ -1,6 +1,7 @@
 # pulsepoint
 
 [![npm version](https://img.shields.io/npm/v/pulsepoint?style=flat-square)](https://www.npmjs.com/package/pulsepoint)
+![build status](https://img.shields.io/github/actions/workflow/status/podskio/pulsepoint/ci.yml?style=flat-square)
 
 ## About
 
