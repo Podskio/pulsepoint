@@ -1,7 +1,9 @@
 # pulsepoint
 
-[![npm version](https://img.shields.io/npm/v/pulsepoint?style=flat-square)](https://www.npmjs.com/package/pulsepoint)
-![build status](https://img.shields.io/github/actions/workflow/status/podskio/pulsepoint/ci.yml?style=flat-square)
+> [!WARNING]
+> **This package is no longer maintained.**
+>
+> PulsePoint has removed the `/DB/*.php` endpoints this package relied on. Their replacement API at `api.pulsepoint.org` sits behind AWS WAF bot protection, so it can't be reached from Node.js.
 
 ## About
 
